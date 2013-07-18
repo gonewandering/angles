@@ -3,6 +3,8 @@ Angles.js
 
 An angular.js wrapper for the Chart.js library.
 
+[demo](http://lgsilver.github.io/angles/)
+
 ### To Use, make sure to include the following .js files above your app:
 ```
     <script src="libs/angular/angular.min.js"></script>
