@@ -13,7 +13,7 @@ An angular.js wrapper for the Chart.js library.
 ```
   var app = angular.module("anglesExample", ["angles"]);
 ```
-### Charts are added using a canvas element with the following syntax, which corresponds to Chart.js. The data and options attributes refer to ng-models in the cntroller scope. You can name these whatever you want:
+### Charts are added using a canvas element with the following syntax, which corresponds to Chart.js. The data and options attributes refer to ng-models in the controller scope. You can name these whatever you want:
 ```
   <canvas linechart options="options" data="chart" id="lineChart" width="500" height="300"></canvas>
 ``` 
