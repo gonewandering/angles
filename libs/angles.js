@@ -116,7 +116,7 @@ angles.directive("donutchart", function () {
 			var ctx = $elem[0].getContext("2d");
 			var chart = new Chart(ctx);
 			$scope.$watch("data", function (newVal, oldVal) { 
-				chart.Donut($scope.data, $scope.options);
+				chart.Doughnut($scope.data, $scope.options);
 			}, true);
 		}
 	}
