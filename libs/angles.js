@@ -8,7 +8,7 @@ angles.directive("linechart", function () {
 			options: "=",
 			id: "@"
 		},
-		link: function ($scope, $elem, $attr) {
+		link: function ($scope, $elem) {
 			var ctx = $elem[0].getContext("2d");
 			var chart = new Chart(ctx);
 			
@@ -30,7 +30,7 @@ angles.directive("barchart", function () {
 			width: "@",
 			height: "@"
 		},
-		link: function ($scope, $elem, $attr) {
+		link: function ($scope, $elem) {
 			var ctx = $elem[0].getContext("2d");
 			var chart = new Chart(ctx);
 			
@@ -51,7 +51,7 @@ angles.directive("radarchart", function () {
 			width: "@",
 			height: "@"
 		},
-		link: function ($scope, $elem, $attr) {
+		link: function ($scope, $elem) {
 			var ctx = $elem[0].getContext("2d");
 			var chart = new Chart(ctx);
 			
@@ -72,7 +72,7 @@ angles.directive("polarchart", function () {
 			width: "@",
 			height: "@"
 		},
-		link: function ($scope, $elem, $attr) {
+		link: function ($scope, $elem) {
 			var ctx = $elem[0].getContext("2d");
 			var chart = new Chart(ctx);
 			$scope.$watch("data", function (newVal, oldVal) { 
@@ -92,7 +92,7 @@ angles.directive("piechart", function () {
 			width: "@",
 			height: "@"
 		},
-		link: function ($scope, $elem, $attr) {
+		link: function ($scope, $elem) {
 			var ctx = $elem[0].getContext("2d");
 			var chart = new Chart(ctx);
 			$scope.$watch("data", function (newVal, oldVal) { 
@@ -112,7 +112,7 @@ angles.directive("donutchart", function () {
 			width: "@",
 			height: "@"
 		},
-		link: function ($scope, $elem, $attr) {
+		link: function ($scope, $elem) {
 			var ctx = $elem[0].getContext("2d");
 			var chart = new Chart(ctx);
 			$scope.$watch("data", function (newVal, oldVal) { 
