@@ -8,8 +8,8 @@ angles.directive("linechart", function () {
 			options: "=",
 			id: "@"
 		},
-		link: function ($scope, $elem, $attr) {
-			var ctx = document.getElementById($attr.id).getContext("2d");
+		link: function ($scope, $elem) {
+			var ctx = $elem[0].getContext("2d");
 			var chart = new Chart(ctx);
 			
 			$scope.$watch("data", function (newVal, oldVal) { 
@@ -30,8 +30,8 @@ angles.directive("barchart", function () {
 			width: "@",
 			height: "@"
 		},
-		link: function ($scope, $elem, $attr) {
-			var ctx = document.getElementById($attr.id).getContext("2d");
+		link: function ($scope, $elem) {
+			var ctx = $elem[0].getContext("2d");
 			var chart = new Chart(ctx);
 			
 			$scope.$watch("data", function (newVal, oldVal) { 
@@ -51,8 +51,8 @@ angles.directive("radarchart", function () {
 			width: "@",
 			height: "@"
 		},
-		link: function ($scope, $elem, $attr) {
-			var ctx = document.getElementById($attr.id).getContext("2d");
+		link: function ($scope, $elem) {
+			var ctx = $elem[0].getContext("2d");
 			var chart = new Chart(ctx);
 			
 			$scope.$watch("data", function (newVal, oldVal) { 
@@ -72,8 +72,8 @@ angles.directive("polarchart", function () {
 			width: "@",
 			height: "@"
 		},
-		link: function ($scope, $elem, $attr) {
-			var ctx = document.getElementById($attr.id).getContext("2d");
+		link: function ($scope, $elem) {
+			var ctx = $elem[0].getContext("2d");
 			var chart = new Chart(ctx);
 			$scope.$watch("data", function (newVal, oldVal) { 
 				chart.PolarArea($scope.data, $scope.options);
@@ -92,8 +92,8 @@ angles.directive("piechart", function () {
 			width: "@",
 			height: "@"
 		},
-		link: function ($scope, $elem, $attr) {
-			var ctx = document.getElementById($attr.id).getContext("2d");
+		link: function ($scope, $elem) {
+			var ctx = $elem[0].getContext("2d");
 			var chart = new Chart(ctx);
 			$scope.$watch("data", function (newVal, oldVal) { 
 				chart.Pie($scope.data, $scope.options);
@@ -112,8 +112,8 @@ angles.directive("donutchart", function () {
 			width: "@",
 			height: "@"
 		},
-		link: function ($scope, $elem, $attr) {
-			var ctx = document.getElementById($attr.id).getContext("2d");
+		link: function ($scope, $elem) {
+			var ctx = $elem[0].getContext("2d");
 			var chart = new Chart(ctx);
 			$scope.$watch("data", function (newVal, oldVal) { 
 				chart.Donut($scope.data, $scope.options);
