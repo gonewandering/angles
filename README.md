@@ -3,11 +3,11 @@ Angles.js
 
 An angular.js wrapper for the Chart.js library.
 
-### To Use, make sure to include the following scripts above your app:
+### To Use, make sure to include the following .js files above your app:
 ```
-  Angular.js
-  Chart.js
-  Angles.js
+    <script src="libs/angular/angular.min.js"></script>
+    <script src="libs/Chart.js/Chart.min.js"></script>
+    <script src="libs/angles.js"></script>
 ```
 ### Next, make sure to add "angles" to your Angular app requirements:
 ```
