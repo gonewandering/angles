@@ -1,6 +1,7 @@
 var angles = angular.module("angles", []);
 
-angles.directive("linechart", function () { 
+
+angles.chart = function (type) {
 	return { 
 		restrict: "A",
 		scope: {
@@ -13,111 +14,39 @@ angles.directive("linechart", function () {
 			var chart = new Chart(ctx);
 			
 			$scope.$watch("data", function (newVal, oldVal) { 
-				chart.Line($scope.data, $scope.options);
-				console.log(chart);
+				chart[type]($scope.data, $scope.options);
 			}, true);
 		}
 	}
-});
+}
 
-angles.directive("barchart", function () { 
+
+/* General Chart Wrapper */
+angles.directive("chart", function () { 
 	return { 
 		restrict: "A",
 		scope: {
 			data: "=",
+			type: "@",
 			options: "=",
-			id: "@",
-			width: "@",
-			height: "@"
+			id: "@"
 		},
 		link: function ($scope, $elem) {
 			var ctx = $elem[0].getContext("2d");
 			var chart = new Chart(ctx);
 			
 			$scope.$watch("data", function (newVal, oldVal) { 
-				chart.Bar($scope.data, $scope.options);
+				chart[$scope.type]($scope.data, $scope.options);
 			}, true);
 		}
-	}
+	} 
 });
 
-angles.directive("radarchart", function () { 
-	return { 
-		restrict: "A",
-		scope: {
-			data: "=",
-			options: "=",
-			id: "@",
-			width: "@",
-			height: "@"
-		},
-		link: function ($scope, $elem) {
-			var ctx = $elem[0].getContext("2d");
-			var chart = new Chart(ctx);
-			
-			$scope.$watch("data", function (newVal, oldVal) { 
-				chart.Radar($scope.data, $scope.options);
-			}, true);
-		}
-	}
-});
 
-angles.directive("polarchart", function () { 
-	return { 
-		restrict: "A",
-		scope: {
-			data: "=",
-			options: "=",
-			id: "@",
-			width: "@",
-			height: "@"
-		},
-		link: function ($scope, $elem) {
-			var ctx = $elem[0].getContext("2d");
-			var chart = new Chart(ctx);
-			$scope.$watch("data", function (newVal, oldVal) { 
-				chart.PolarArea($scope.data, $scope.options);
-			}, true);
-		}
-	}
-});
-
-angles.directive("piechart", function () { 
-	return { 
-		restrict: "A",
-		scope: {
-			data: "=",
-			options: "=",
-			id: "@",
-			width: "@",
-			height: "@"
-		},
-		link: function ($scope, $elem) {
-			var ctx = $elem[0].getContext("2d");
-			var chart = new Chart(ctx);
-			$scope.$watch("data", function (newVal, oldVal) { 
-				chart.Pie($scope.data, $scope.options);
-			}, true);
-		}
-	}
-});
-
-angles.directive("donutchart", function () { 
-	return { 
-		restrict: "A",
-		scope: {
-			data: "=",
-			options: "=",
-			id: "@",
-			width: "@",
-			height: "@"
-		},
-		link: function ($scope, $elem) {
-			var ctx = $elem[0].getContext("2d");
-			var chart = new Chart(ctx);
-			$scope.$watch("data", function (newVal, oldVal) { 
-				chart.Doughnut($scope.data, $scope.options);
-			}, true);
-		}
-	}
-});
+/* Aliases for various chart types */
+angles.directive("linechart", function () { return angles.chart("Line"); });
+angles.directive("barchart", function () { return angles.chart("Bar"); });
+angles.directive("radarchart", function () { return angles.chart("Radar"); });
+angles.directive("polarchart", function () { return angles.chart("PolarArea"); });
+angles.directive("piechart", function () { return angles.chart("Pie"); });
+angles.directive("donutchart", function () { return angles.chart("Donut"); });
