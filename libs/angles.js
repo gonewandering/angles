@@ -14,6 +14,9 @@ angles.chart = function (type) {
 			var chart = new Chart(ctx);
 			
 			$scope.$watch("data", function (newVal, oldVal) { 
+				// if data not defined, exit
+				if (!newVal) return;
+				
 				chart[type]($scope.data, $scope.options);
 			}, true);
 		}
