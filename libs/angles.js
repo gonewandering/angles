@@ -52,4 +52,4 @@ angles.directive("barchart", function () { return angles.chart("Bar"); });
 angles.directive("radarchart", function () { return angles.chart("Radar"); });
 angles.directive("polarchart", function () { return angles.chart("PolarArea"); });
 angles.directive("piechart", function () { return angles.chart("Pie"); });
-angles.directive("donutchart", function () { return angles.chart("Donut"); });
+angles.directive("donutchart", function () { return angles.chart("Doughnut"); });
