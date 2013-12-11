@@ -7,12 +7,18 @@ angles.chart = function (type) {
 		scope: {
 			data: "=",
 			options: "=",
-			id: "@"
+			id: "@",
+			width: "=",
+			height: "="
 		},
 		link: function ($scope, $elem) {
 			var ctx = $elem[0].getContext("2d");
+
+			ctx.canvas.width = $scope.width || ctx.canvas.width;
+			ctx.canvas.height = $scope.height || ctx.canvas.height;
+
 			var chart = new Chart(ctx);
-			
+
 			$scope.$watch("data", function (newVal, oldVal) { 
 				// if data not defined, exit
 				if (!newVal) return;
@@ -32,10 +38,16 @@ angles.directive("chart", function () {
 			data: "=",
 			type: "@",
 			options: "=",
-			id: "@"
+			id: "@",
+			width: "=",
+			height: "="
 		},
 		link: function ($scope, $elem) {
 			var ctx = $elem[0].getContext("2d");
+
+			ctx.canvas.width = $scope.width || ctx.canvas.width;
+			ctx.canvas.height = $scope.height || ctx.canvas.height;
+
 			var chart = new Chart(ctx);
 			
 			$scope.$watch("data", function (newVal, oldVal) { 
