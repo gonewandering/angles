@@ -14,9 +14,17 @@ angles.chart = function (type) {
 		link: function ($scope, $elem) {
 			var ctx = $elem[0].getContext("2d");
 
-			ctx.canvas.width = $scope.width || ctx.canvas.width;
-			ctx.canvas.height = $scope.height || ctx.canvas.height;
+			if ($scope.width <= 0) {
+				$elem.width($elem.parent().width());
+				$elem.height($elem.parent().height());
+				ctx.canvas.width = $elem.width();
+				ctx.canvas.height = ctx.canvas.width / 2;				
+			} else {
+				ctx.canvas.width = $scope.width || ctx.canvas.width;
+				ctx.canvas.height = $scope.height || ctx.canvas.height;
+			}
 
+	
 			var chart = new Chart(ctx);
 
 			$scope.$watch("data", function (newVal, oldVal) { 
@@ -45,8 +53,15 @@ angles.directive("chart", function () {
 		link: function ($scope, $elem) {
 			var ctx = $elem[0].getContext("2d");
 
-			ctx.canvas.width = $scope.width || ctx.canvas.width;
-			ctx.canvas.height = $scope.height || ctx.canvas.height;
+			if ($scope.width <= 0) {
+				$elem.width($elem.parent().width());
+				$elem.height($elem.parent().height());
+				ctx.canvas.width = $elem.width();
+				ctx.canvas.height = ctx.canvas.width / 2;				
+			} else {
+				ctx.canvas.width = $scope.width || ctx.canvas.width;
+				ctx.canvas.height = $scope.height || ctx.canvas.height;
+			}
 
 			var chart = new Chart(ctx);
 			
