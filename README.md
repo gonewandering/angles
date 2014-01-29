@@ -12,9 +12,9 @@ Basic Usage
 
 To Use, make sure to include the following .js files above your app:
 ```html
-<script src="libs/angular/angular.min.js"></script>
-<script src="libs/Chart.js/Chart.min.js"></script>
-<script src="libs/angles.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.10/angular.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/0.2.0/Chart.min.js"></script>
+<script src="angles.js"></script>
 ```
 
 Next, make sure to add **"angles"** to your Angular app requirements:
