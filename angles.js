@@ -65,8 +65,10 @@ angles.directive("chart", function () {
 
 			var chart = new Chart(ctx);
 			
-			$scope.$watch("data", function (newVal, oldVal) { 
-				chart[$scope.type]($scope.data, $scope.options);
+			$scope.$watch("data", function (newVal, oldVal) {
+				if ($scope.data !== undefined) { 
+				  chart[$scope.type]($scope.data, $scope.options);
+				}
 			}, true);
 		}
 	} 
