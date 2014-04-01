@@ -10,12 +10,11 @@ angles.chart = function (type) {
             width: "=",
             height: "=",
             resize: "=",
-            type: "@"
+            chart: "@"
         },
         link: function ($scope, $elem) {
             var ctx = $elem[0].getContext("2d");
             var autosize = false;
-            var type = type || $scope.type || "line";
 
 			$scope.size = function () {
 	            if ($scope.width <= 0) {
@@ -32,6 +31,8 @@ angles.chart = function (type) {
 
             $scope.$watch("data", function (newVal, oldVal) { 
                 // if data not defined, exit
+                if ($scope.chart) { type = $scope.chart; }
+                
                 if(autosize){
                     $scope.size();
                     chart = new Chart(ctx);
@@ -41,10 +42,9 @@ angles.chart = function (type) {
             }, true);
             
             if ($scope.resize) {
-		        var w = angular.element($window);
-		
-		        w.bind('resize', function () {
+		        angular.element(window).bind('resize', function () {
 		            $scope.size();
+		            chart = new Chart(ctx);
 		            chart[type]($scope.data, $scope.options);
 		        });	            
             }
