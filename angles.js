@@ -14,13 +14,15 @@ angles.chart = function (type) {
         },
         link: function ($scope, $elem) {
             var ctx = $elem[0].getContext("2d");
-            var autosize = false;
+            var autosize = false, timer;
 
 			$scope.size = function () {
 	            if ($scope.width <= 0) {
 	                $elem.width($elem.parent().width());
 	                $elem.height($elem.parent().height());
-	                ctx.canvas.width = $elem.width();
+                    // when width|height = 0, chart crash
+                    // set a minimum width, here 50
+	                ctx.canvas.width = ($elem.width() > 50) ? $elem.width() : 50;
 	                ctx.canvas.height = ctx.canvas.width / 2;               
 	            } else {
 	                ctx.canvas.width = $scope.width || ctx.canvas.width;
@@ -41,12 +43,23 @@ angles.chart = function (type) {
                 chart[type]($scope.data, $scope.options);
             }, true);
             
+            // redraw only on resize end
+            function redraw(){
+                $scope.$apply(function(){
+                    $scope.size();
+                    chart = new Chart(ctx);
+                    chart[type]($scope.data, $scope.options);
+                });
+            }
+
             if ($scope.resize) {
-		        angular.element(window).bind('resize', function () {
-		            $scope.size();
-		            chart = new Chart(ctx);
-		            chart[type]($scope.data, $scope.options);
-		        });	            
+                angular.element(window).bind('resize', function () {
+                    // detect resize end
+                    clearTimeout(timer);
+                    timer = setTimeout(function(){
+                        redraw();
+                    }, 100);
+                });
             }
             
 			$scope.size();
