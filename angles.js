@@ -19,14 +19,19 @@ angles.chart = function (type) {
 			$scope.size = function () {
 	            if ($scope.width <= 0) {
 	                $elem.width($elem.parent().width());
-	                $elem.height($elem.parent().height());
 	                ctx.canvas.width = $elem.width();
-	                ctx.canvas.height = ctx.canvas.width / 2;               
 	            } else {
 	                ctx.canvas.width = $scope.width || ctx.canvas.width;
-	                ctx.canvas.height = $scope.height || ctx.canvas.height;
 	                autosize = true;
 	            }				
+
+                if($scope.height <= 0){
+                    $elem.height($elem.parent().height());
+                    ctx.canvas.height = ctx.canvas.width / 2;   
+                } else {
+                    ctx.canvas.height = $scope.height || ctx.canvas.height;
+                    autosize = true;
+                }
 			}
 
             $scope.$watch("data", function (newVal, oldVal) { 
