@@ -36,6 +36,9 @@ angles.chart = function (type) {
 
             $scope.$watch("data", function (newVal, oldVal) { 
                 // if data not defined, exit
+                if (!newVal) {
+                  return;
+                }
                 if ($scope.chart) { type = $scope.chart; }
                 
                 if(autosize){
