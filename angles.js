@@ -1,7 +1,7 @@
 var angles = angular.module("angles", []);
 
 angles.chart = function (type) {
-    return { 
+    return {
         restrict: "A",
         scope: {
             data: "=",
@@ -16,57 +16,57 @@ angles.chart = function (type) {
             var ctx = $elem[0].getContext("2d");
             var autosize = false;
 
-			$scope.size = function () {
-	            if ($scope.width <= 0) {
-	                $elem.width($elem.parent().width());
-	                ctx.canvas.width = $elem.width();
-	            } else {
-	                ctx.canvas.width = $scope.width || ctx.canvas.width;
-	                autosize = true;
-	            }				
+            $scope.size = function () {
+                if ($scope.width <= 0) {
+                    $elem.width($elem.parent().width());
+                    ctx.canvas.width = $elem.width();
+                } else {
+                    ctx.canvas.width = $scope.width || ctx.canvas.width;
+                    autosize = true;
+                }
 
-                if($scope.height <= 0){
+                if ($scope.height <= 0) {
                     $elem.height($elem.parent().height());
-                    ctx.canvas.height = ctx.canvas.width / 2;   
+                    ctx.canvas.height = ctx.canvas.width / 2;
                 } else {
                     ctx.canvas.height = $scope.height || ctx.canvas.height;
                     autosize = true;
                 }
-			}
+            };
 
-            $scope.$watch("data", function (newVal, oldVal) { 
+            $scope.$watch("data", function (newVal, oldVal) {
                 // if data not defined, exit
                 if (!newVal) {
-                  return;
+                    return;
                 }
                 if ($scope.chart) { type = $scope.chart; }
-                
-                if(autosize){
+
+                if (autosize) {
                     $scope.size();
                     chart = new Chart(ctx);
                 } else if (!newVal) return;
-                
+
                 chart[type]($scope.data, $scope.options);
             }, true);
-            
+
             if ($scope.resize) {
-		        angular.element(window).bind('resize', function () {
-		            $scope.size();
-		            chart = new Chart(ctx);
-		            chart[type]($scope.data, $scope.options);
-		        });	  
-                
-                //unbind the event when scope destroyed 
-                $scope.$on("$destroy", function() {
-                     angular.element(window).off();
-                });                           
+                angular.element(window).on('resize', function () {
+                    $scope.size();
+                    chart = new Chart(ctx);
+                    chart[type]($scope.data, $scope.options);
+                });
+
+                //unbind the event when scope destroyed
+                $scope.$on("$destroy", function () {
+                    angular.element(window).off('resize');
+                });
             }
-            
-			$scope.size();
+
+            $scope.size();
             var chart = new Chart(ctx);
         }
     }
-}
+};
 
 
 /* Aliases for various chart types */
