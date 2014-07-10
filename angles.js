@@ -50,7 +50,7 @@ angles.chart = function (type) {
             }, true);
             
             if ($scope.resize) {
-		        angular.element(window).bind('resize', function () {
+		        angular.element(window).on('resize', function () {
 		            $scope.size();
 		            chart = new Chart(ctx);
 		            chart[type]($scope.data, $scope.options);
@@ -58,7 +58,7 @@ angles.chart = function (type) {
                 
                 //unbind the event when scope destroyed 
                 $scope.$on("$destroy", function() {
-                     angular.element(window).off();
+                     angular.element(window).off('resize');
                 });                           
             }
             
