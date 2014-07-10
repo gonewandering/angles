@@ -54,7 +54,12 @@ angles.chart = function (type) {
 		            $scope.size();
 		            chart = new Chart(ctx);
 		            chart[type]($scope.data, $scope.options);
-		        });	            
+		        });	  
+                
+                //unbind the event when scope destroyed 
+                $scope.$on("$destroy", function() {
+                     angular.element(window).off();
+                });                           
             }
             
 			$scope.size();
