@@ -4,6 +4,7 @@
   "authors": [
     "Lindsay Silver"
   ],
+  "main": "angles.js",
   "ignore": [
     "**/.*",
     "node_modules",
