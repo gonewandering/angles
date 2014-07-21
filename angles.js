@@ -23,11 +23,11 @@ angles.chart = function (type) {
 	            } else {
 	                ctx.canvas.width = $scope.width || ctx.canvas.width;
 	                autosize = true;
-	            }				
+	            }
 
                 if($scope.height <= 0){
                     $elem.height($elem.parent().height());
-                    ctx.canvas.height = ctx.canvas.width / 2;   
+                    ctx.canvas.height = ctx.canvas.width / 2;
                 } else {
                     ctx.canvas.height = $scope.height || ctx.canvas.height;
                     autosize = true;
@@ -35,6 +35,9 @@ angles.chart = function (type) {
 			}
 
             $scope.$watch("data", function (newVal, oldVal) { 
+                if(chartCreated)
+                    chartCreated.destroy();
+                    
                 // if data not defined, exit
                 if (!newVal) {
                   return;
@@ -46,24 +49,24 @@ angles.chart = function (type) {
                     chart = new Chart(ctx);
                 } else if (!newVal) return;
                 
-                chart[type]($scope.data, $scope.options);
+                chartCreated = chart[type]($scope.data, $scope.options);
+                chartCreated.update();
             }, true);
             
             if ($scope.resize) {
 		        angular.element(window).bind('resize', function () {
 		            $scope.size();
 		            chart = new Chart(ctx);
-		            chart[type]($scope.data, $scope.options);
-		        });	  
-                
+                    chartCreated = chart[type]($scope.data, $scope.options);
+		        });
                 //unbind the event when scope destroyed 
                 $scope.$on("$destroy", function() {
-                     angular.element(window).off();
-                });                           
+                    angular.element(window).off();
+                });
             }
-            
-			$scope.size();
+            $scope.size();
             var chart = new Chart(ctx);
+            var chartCreated;
         }
     }
 }
