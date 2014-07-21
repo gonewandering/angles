@@ -7,6 +7,8 @@ An angular.js wrapper for the Chart.js library.
 
 New Update of ChartJS (Beta) allow more interaction with graph ( tooltips and png/jpg export of graphs)
 
+[ChartJS](http://www.chartjs.org/)
+
 Basic Usage
 -----------
 
