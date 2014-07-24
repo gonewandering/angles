@@ -5,6 +5,7 @@
     "Lindsay Silver",
     "Jesus Torres"
   ],
+  "main": "angles.js",
   "ignore": [
     "**/.*",
     "node_modules",
