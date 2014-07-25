@@ -39,6 +39,20 @@ Charts can also be added with shorter, aliased types
 
 In your controller, make sure you provide the appropriate data and options per Chart.js documentation:
 
+you can add responsive attribute to enable responsiveness of canvas
+
+```html
+<canvas barchart responsive=true options="options" data="chart"></canvas>
+```
+
+the legend attribute auto generate a legend after canvas container 
+
+```html
+<canvas barchart legend=true options="options" data="chart"></canvas>
+```
+
+The template for this legend is a legendTemplate in the chart options
+
 ```javascript
 $scope.chart = {
     labels : ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
