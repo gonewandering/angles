@@ -1,0 +1,30 @@
+{
+  "name": "angles-page",
+  "version": "0.8.0",
+  "homepage": "https://github.com/lgsilver/angles",
+  "description": "Angles Demo directive page",
+  "main": "index.html",
+  "keywords": [
+    "Angles",
+    "CharJS",
+    "charjs",
+    "angles",
+    "graph",
+    "angular",
+    "AngularJS"
+  ],
+  "authors": [
+    "Lindsay Silver",
+    "Jesus Torres"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angles": "*"
+  }
+}
