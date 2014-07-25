@@ -1,141 +1,342 @@
-
-
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
   <head>
     <meta charset="utf-8">
-    <title>Angular Chart.js Wrapper Stocks Demo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Angles by jmtt89</title>
 
-    <!-- Le styles -->
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-
-  <link href="app.css" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
-
   <body>
+    <div class="wrapper">
+      <header>
+        <h1>Angles</h1>
+        <p>An angular.js wrapper for Chart.js</p>
 
-  <div class="container">
-    <div class="row-fluid">
-      <div class="span6">
-        <h3>Angles.js</h3>
-      </div>
-      <div class="span6 right">
-        <h3>Thrown together by <a href="http://lindsay.gs">Lindsay Silver</a></h3>
-      </div>
+        <p class="view"><a href="https://github.com/jmtt89/angles">View the Project on GitHub <small>jmtt89/angles</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/jmtt89/angles/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/jmtt89/angles/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/jmtt89/angles">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="anglesjs" class="anchor" href="#anglesjs"><span class="octicon octicon-link"></span></a>Angles.js</h1>
+
+<p>An angular.js wrapper for the Chart.js library.</p>
+
+<p><a href="http://www.chartjs.org/docs/">Chart.js Documentation</a></p>
+
+<p>New Update of ChartJS (Beta) allow more interaction with graph ( tooltips and png/jpg export of graphs)</p>
+
+<p><a href="http://www.chartjs.org/">ChartJS</a></p>
+
+<h2>
+<a name="basic-usage" class="anchor" href="#basic-usage"><span class="octicon octicon-link"></span></a>Basic Usage</h2>
+
+<p>To Use, make sure to include the following .js files above your app:</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.10/angular.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"//cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.1-beta.2/Chart.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"angles.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+
+<p>Next, make sure to add <strong>"angles"</strong> to your Angular app requirements:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">"anglesExample"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"angles"</span><span class="p">]);</span>
+</pre></div>
+
+<p>Charts are added using a canvas element with the following syntax, which corresponds to Chart.js. The data and options attributes refer to ng-models in the controller scope. You can name these whatever you want:</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;canvas</span> <span class="na">chart</span> <span class="na">type=</span><span class="s">"Line"</span> <span class="na">options=</span><span class="s">"options"</span> <span class="na">data=</span><span class="s">"chart"</span> <span class="na">width=</span><span class="s">"500"</span> <span class="na">height=</span><span class="s">"300"</span><span class="nt">&gt;&lt;/canvas&gt;</span>
+</pre></div>
+
+<p>Charts can also be added with shorter, aliased types</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;canvas</span> <span class="na">barchart</span> <span class="na">options=</span><span class="s">"options"</span> <span class="na">data=</span><span class="s">"chart"</span> <span class="na">width=</span><span class="s">"500"</span> <span class="na">height=</span><span class="s">"300"</span><span class="nt">&gt;&lt;/canvas&gt;</span>
+</pre></div>
+
+<p>In your controller, make sure you provide the appropriate data and options per Chart.js documentation:</p>
+
+<p>you can add responsive attribute to enable responsiveness of canvas</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;canvas</span> <span class="na">barchart</span> <span class="na">responsive=</span><span class="s">true</span> <span class="na">options=</span><span class="s">"options"</span> <span class="na">data=</span><span class="s">"chart"</span><span class="nt">&gt;&lt;/canvas&gt;</span>
+</pre></div>
+
+<p>the legend attribute auto generate a legend after canvas container </p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;canvas</span> <span class="na">barchart</span> <span class="na">legend=</span><span class="s">true</span> <span class="na">options=</span><span class="s">"options"</span> <span class="na">data=</span><span class="s">"chart"</span><span class="nt">&gt;&lt;/canvas&gt;</span>
+</pre></div>
+
+<p>The template for this legend is a legendTemplate in the chart options</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">$scope</span><span class="p">.</span><span class="nx">chart</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">labels</span> <span class="o">:</span> <span class="p">[</span><span class="s2">"Monday"</span><span class="p">,</span> <span class="s2">"Tuesday"</span><span class="p">,</span> <span class="s2">"Wednesday"</span><span class="p">,</span> <span class="s2">"Thursday"</span><span class="p">,</span> <span class="s2">"Friday"</span><span class="p">],</span>
+    <span class="nx">datasets</span> <span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nx">fillColor</span> <span class="o">:</span> <span class="s2">"rgba(151,187,205,0)"</span><span class="p">,</span>
+            <span class="nx">strokeColor</span> <span class="o">:</span> <span class="s2">"#e67e22"</span><span class="p">,</span>
+            <span class="nx">pointColor</span> <span class="o">:</span> <span class="s2">"rgba(151,187,205,0)"</span><span class="p">,</span>
+            <span class="nx">pointStrokeColor</span> <span class="o">:</span> <span class="s2">"#e67e22"</span><span class="p">,</span>
+            <span class="nx">data</span> <span class="o">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nx">fillColor</span> <span class="o">:</span> <span class="s2">"rgba(151,187,205,0)"</span><span class="p">,</span>
+            <span class="nx">strokeColor</span> <span class="o">:</span> <span class="s2">"#f1c40f"</span><span class="p">,</span>
+            <span class="nx">pointColor</span> <span class="o">:</span> <span class="s2">"rgba(151,187,205,0)"</span><span class="p">,</span>
+            <span class="nx">pointStrokeColor</span> <span class="o">:</span> <span class="s2">"#f1c40f"</span><span class="p">,</span>
+            <span class="nx">data</span> <span class="o">:</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">],</span> 
+<span class="p">};</span>
+</pre></div>
+
+<p>That's it. You can change the values of the chart just as you would with any other angular model.</p>
+
+<h2>
+<a name="directives" class="anchor" href="#directives"><span class="octicon octicon-link"></span></a>Directives</h2>
+
+<h3>
+<a name="linechart" class="anchor" href="#linechart"><span class="octicon octicon-link"></span></a>linechart</h3>
+
+<p>For Chart.js Line Charts</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;canvas</span> <span class="na">linechart</span> <span class="na">options=</span><span class="s">"options"</span> <span class="na">data=</span><span class="s">"chart"</span> <span class="na">width=</span><span class="s">"300"</span> <span class="na">height=</span><span class="s">"300"</span><span class="nt">&gt;&lt;/canvas&gt;</span>
+OR
+<span class="nt">&lt;canvas</span> <span class="na">chart</span> <span class="na">type=</span><span class="s">"Line"</span> <span class="na">options=</span><span class="s">"options"</span> <span class="na">data=</span><span class="s">"chart"</span> <span class="na">width=</span><span class="s">"300"</span> <span class="na">height=</span><span class="s">"300"</span><span class="nt">&gt;&lt;/canvas&gt;</span>
+</pre></div>
+
+<h3>
+<a name="barchart" class="anchor" href="#barchart"><span class="octicon octicon-link"></span></a>barchart</h3>
+
+<p>For Chart.js Bar Charts</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;canvas</span> <span class="na">barchart</span> <span class="na">options=</span><span class="s">"options"</span> <span class="na">data=</span><span class="s">"chart"</span> <span class="na">width=</span><span class="s">"300"</span> <span class="na">height=</span><span class="s">"300"</span><span class="nt">&gt;&lt;/canvas&gt;</span>
+OR
+<span class="nt">&lt;canvas</span> <span class="na">chart</span> <span class="na">type=</span><span class="s">"Bar"</span> <span class="na">options=</span><span class="s">"options"</span> <span class="na">data=</span><span class="s">"chart"</span> <span class="na">width=</span><span class="s">"300"</span> <span class="na">height=</span><span class="s">"300"</span><span class="nt">&gt;&lt;/canvas&gt;</span>
+</pre></div>
+
+<h3>
+<a name="radarchart" class="anchor" href="#radarchart"><span class="octicon octicon-link"></span></a>radarchart</h3>
+
+<p>For Chart.js Radar Charts</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;canvas</span> <span class="na">radarchart</span> <span class="na">options=</span><span class="s">"options"</span> <span class="na">data=</span><span class="s">"chart"</span> <span class="na">width=</span><span class="s">"300"</span> <span class="na">height=</span><span class="s">"300"</span><span class="nt">&gt;&lt;/canvas&gt;</span>
+OR
+<span class="nt">&lt;canvas</span> <span class="na">chart</span> <span class="na">type=</span><span class="s">"Radar"</span> <span class="na">options=</span><span class="s">"options"</span> <span class="na">data=</span><span class="s">"chart"</span> <span class="na">width=</span><span class="s">"300"</span> <span class="na">height=</span><span class="s">"300"</span><span class="nt">&gt;&lt;/canvas&gt;</span>
+</pre></div>
+
+<h3>
+<a name="polarchart" class="anchor" href="#polarchart"><span class="octicon octicon-link"></span></a>polarchart</h3>
+
+<p>For Chart.js Polar Charts</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;canvas</span> <span class="na">polarchart</span> <span class="na">options=</span><span class="s">"options"</span> <span class="na">data=</span><span class="s">"chart"</span> <span class="na">width=</span><span class="s">"300"</span> <span class="na">height=</span><span class="s">"300"</span><span class="nt">&gt;&lt;/canvas&gt;</span>
+OR
+<span class="nt">&lt;canvas</span> <span class="na">chart</span> <span class="na">type=</span><span class="s">"PolarArea"</span> <span class="na">options=</span><span class="s">"options"</span> <span class="na">data=</span><span class="s">"chart"</span> <span class="na">width=</span><span class="s">"300"</span> <span class="na">height=</span><span class="s">"300"</span><span class="nt">&gt;&lt;/canvas&gt;</span>
+</pre></div>
+
+<h3>
+<a name="piechart" class="anchor" href="#piechart"><span class="octicon octicon-link"></span></a>piechart</h3>
+
+<p>For Chart.js Pie Charts</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;canvas</span> <span class="na">piechart</span> <span class="na">options=</span><span class="s">"options"</span> <span class="na">data=</span><span class="s">"chart"</span> <span class="na">width=</span><span class="s">"300"</span> <span class="na">height=</span><span class="s">"300"</span><span class="nt">&gt;&lt;/canvas&gt;</span>
+OR
+<span class="nt">&lt;canvas</span> <span class="na">chart</span> <span class="na">type=</span><span class="s">"Pie"</span> <span class="na">options=</span><span class="s">"options"</span> <span class="na">data=</span><span class="s">"chart"</span> <span class="na">width=</span><span class="s">"300"</span> <span class="na">height=</span><span class="s">"300"</span><span class="nt">&gt;&lt;/canvas&gt;</span>
+</pre></div>
+
+<h3>
+<a name="doughnutchart" class="anchor" href="#doughnutchart"><span class="octicon octicon-link"></span></a>doughnutchart</h3>
+
+<p>For Chart.js Doughnut Charts</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;canvas</span> <span class="na">doughnutchart</span> <span class="na">options=</span><span class="s">"options"</span> <span class="na">data=</span><span class="s">"chart"</span> <span class="na">width=</span><span class="s">"300"</span> <span class="na">height=</span><span class="s">"300"</span><span class="nt">&gt;&lt;/canvas&gt;</span>
+OR
+<span class="nt">&lt;canvas</span> <span class="na">chart</span> <span class="na">type=</span><span class="s">"Doughnut"</span> <span class="na">options=</span><span class="s">"options"</span> <span class="na">data=</span><span class="s">"chart"</span> <span class="na">width=</span><span class="s">"300"</span> <span class="na">height=</span><span class="s">"300"</span><span class="nt">&gt;&lt;/canvas&gt;</span>
+</pre></div>
+
+<h2>
+<a name="options-and-data" class="anchor" href="#options-and-data"><span class="octicon octicon-link"></span></a>Options and Data</h2>
+
+<p>You can provide options and data to all charts via the options and data attributes on the canvas elements.</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;body</span> <span class="na">ng-app=</span><span class="s">"app"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">ng-controller=</span><span class="s">"MainCtrl"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;canvas</span> <span class="na">donutchart</span> <span class="na">options=</span><span class="s">"myChartOptions"</span> <span class="na">data=</span><span class="s">"myChartData"</span> <span class="na">width=</span><span class="s">"300"</span> <span class="na">height=</span><span class="s">"300"</span><span class="nt">&gt;&lt;/canvas&gt;</span>
+
+    <span class="nt">&lt;/div&gt;</span>
+
+
+<span class="nt">&lt;/body&gt;</span>
+</pre></div>
+
+<div class="highlight highlight-javascript"><pre><span class="s1">'use strict'</span><span class="p">;</span>
+
+<span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'app'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'angles'</span><span class="p">]).</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'MainCtrl'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">$scope</span> <span class="p">)</span> <span class="p">{</span>
+
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">myChartData</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nx">value</span><span class="o">:</span> <span class="mi">30</span><span class="p">,</span>
+            <span class="nx">color</span><span class="o">:</span><span class="s2">"#F7464A"</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nx">value</span> <span class="o">:</span> <span class="mi">50</span><span class="p">,</span>
+            <span class="nx">color</span> <span class="o">:</span> <span class="s2">"#E2EAE9"</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nx">value</span> <span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
+            <span class="nx">color</span> <span class="o">:</span> <span class="s2">"#D4CCC5"</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nx">value</span> <span class="o">:</span> <span class="mi">40</span><span class="p">,</span>
+            <span class="nx">color</span> <span class="o">:</span> <span class="s2">"#949FB1"</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nx">value</span> <span class="o">:</span> <span class="mi">120</span><span class="p">,</span>
+            <span class="nx">color</span> <span class="o">:</span> <span class="s2">"#4D5360"</span>
+        <span class="p">}</span>
+    <span class="p">];</span>
+
+    <span class="c1">//Globals</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">myChartOptions</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="c1">// Boolean - Whether to animate the chart</span>
+        <span class="nx">animation</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+
+        <span class="c1">// Number - Number of animation steps</span>
+        <span class="nx">animationSteps</span><span class="o">:</span> <span class="mi">60</span><span class="p">,</span>
+
+        <span class="c1">// String - Animation easing effect</span>
+        <span class="nx">animationEasing</span><span class="o">:</span> <span class="s2">"easeOutQuart"</span><span class="p">,</span>
+
+        <span class="c1">// Boolean - If we should show the scale at all</span>
+        <span class="nx">showScale</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+
+        <span class="c1">// Boolean - If we want to override with a hard coded scale</span>
+        <span class="nx">scaleOverride</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+
+        <span class="c1">// ** Required if scaleOverride is true **</span>
+        <span class="c1">// Number - The number of steps in a hard coded scale</span>
+        <span class="nx">scaleSteps</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="c1">// Number - The value jump in the hard coded scale</span>
+        <span class="nx">scaleStepWidth</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="c1">// Number - The scale starting value</span>
+        <span class="nx">scaleStartValue</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+
+        <span class="c1">// String - Colour of the scale line</span>
+        <span class="nx">scaleLineColor</span><span class="o">:</span> <span class="s2">"rgba(0,0,0,.1)"</span><span class="p">,</span>
+
+        <span class="c1">// Number - Pixel width of the scale line</span>
+        <span class="nx">scaleLineWidth</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+
+        <span class="c1">// Boolean - Whether to show labels on the scale</span>
+        <span class="nx">scaleShowLabels</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+
+        <span class="c1">// Interpolated JS string - can access value</span>
+        <span class="nx">scaleLabel</span><span class="o">:</span> <span class="s2">"&lt;%=value%&gt;"</span><span class="p">,</span>
+
+        <span class="c1">// Boolean - Whether the scale should stick to integers, not floats even if drawing space is there</span>
+        <span class="nx">scaleIntegersOnly</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+
+        <span class="c1">// Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value</span>
+        <span class="nx">scaleBeginAtZero</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+
+        <span class="c1">// String - Scale label font declaration for the scale label</span>
+        <span class="nx">scaleFontFamily</span><span class="o">:</span> <span class="s2">"'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"</span><span class="p">,</span>
+
+        <span class="c1">// Number - Scale label font size in pixels</span>
+        <span class="nx">scaleFontSize</span><span class="o">:</span> <span class="mi">12</span><span class="p">,</span>
+
+        <span class="c1">// String - Scale label font weight style</span>
+        <span class="nx">scaleFontStyle</span><span class="o">:</span> <span class="s2">"normal"</span><span class="p">,</span>
+
+        <span class="c1">// String - Scale label font colour</span>
+        <span class="nx">scaleFontColor</span><span class="o">:</span> <span class="s2">"#666"</span><span class="p">,</span>
+
+        <span class="c1">// Boolean - whether or not the chart should be responsive and resize when the browser does.</span>
+        <span class="nx">responsive</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+
+        <span class="c1">// Boolean - Determines whether to draw tooltips on the canvas or not</span>
+        <span class="nx">showTooltips</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+
+        <span class="c1">// Array - Array of string names to attach tooltip events</span>
+        <span class="nx">tooltipEvents</span><span class="o">:</span> <span class="p">[</span><span class="s2">"mousemove"</span><span class="p">,</span> <span class="s2">"touchstart"</span><span class="p">,</span> <span class="s2">"touchmove"</span><span class="p">],</span>
+
+        <span class="c1">// String - Tooltip background colour</span>
+        <span class="nx">tooltipFillColor</span><span class="o">:</span> <span class="s2">"rgba(0,0,0,0.8)"</span><span class="p">,</span>
+
+        <span class="c1">// String - Tooltip label font declaration for the scale label</span>
+        <span class="nx">tooltipFontFamily</span><span class="o">:</span> <span class="s2">"'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"</span><span class="p">,</span>
+
+        <span class="c1">// Number - Tooltip label font size in pixels</span>
+        <span class="nx">tooltipFontSize</span><span class="o">:</span> <span class="mi">14</span><span class="p">,</span>
+
+        <span class="c1">// String - Tooltip font weight style</span>
+        <span class="nx">tooltipFontStyle</span><span class="o">:</span> <span class="s2">"normal"</span><span class="p">,</span>
+
+        <span class="c1">// String - Tooltip label font colour</span>
+        <span class="nx">tooltipFontColor</span><span class="o">:</span> <span class="s2">"#fff"</span><span class="p">,</span>
+
+        <span class="c1">// String - Tooltip title font declaration for the scale label</span>
+        <span class="nx">tooltipTitleFontFamily</span><span class="o">:</span> <span class="s2">"'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"</span><span class="p">,</span>
+
+        <span class="c1">// Number - Tooltip title font size in pixels</span>
+        <span class="nx">tooltipTitleFontSize</span><span class="o">:</span> <span class="mi">14</span><span class="p">,</span>
+
+        <span class="c1">// String - Tooltip title font weight style</span>
+        <span class="nx">tooltipTitleFontStyle</span><span class="o">:</span> <span class="s2">"bold"</span><span class="p">,</span>
+
+        <span class="c1">// String - Tooltip title font colour</span>
+        <span class="nx">tooltipTitleFontColor</span><span class="o">:</span> <span class="s2">"#fff"</span><span class="p">,</span>
+
+        <span class="c1">// Number - pixel width of padding around tooltip text</span>
+        <span class="nx">tooltipYPadding</span><span class="o">:</span> <span class="mi">6</span><span class="p">,</span>
+
+        <span class="c1">// Number - pixel width of padding around tooltip text</span>
+        <span class="nx">tooltipXPadding</span><span class="o">:</span> <span class="mi">6</span><span class="p">,</span>
+
+        <span class="c1">// Number - Size of the caret on the tooltip</span>
+        <span class="nx">tooltipCaretSize</span><span class="o">:</span> <span class="mi">8</span><span class="p">,</span>
+
+        <span class="c1">// Number - Pixel radius of the tooltip border</span>
+        <span class="nx">tooltipCornerRadius</span><span class="o">:</span> <span class="mi">6</span><span class="p">,</span>
+
+        <span class="c1">// Number - Pixel offset from point x to tooltip edge</span>
+        <span class="nx">tooltipXOffset</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+
+        <span class="c1">// String - Template string for single tooltips</span>
+        <span class="nx">tooltipTemplate</span><span class="o">:</span> <span class="s2">"&lt;%if (label){%&gt;&lt;%=label%&gt;: &lt;%}%&gt;&lt;%= value %&gt;"</span><span class="p">,</span>
+
+        <span class="c1">// String - Template string for single tooltips</span>
+        <span class="nx">multiTooltipTemplate</span><span class="o">:</span> <span class="s2">"&lt;%= value %&gt;"</span><span class="p">,</span>
+
+        <span class="c1">// Function - Will fire on animation progression.</span>
+        <span class="nx">onAnimationProgress</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){},</span>
+
+        <span class="c1">// Function - Will fire on animation completion.</span>
+        <span class="nx">onAnimationComplete</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){}</span>
+    <span class="p">};</span>
+
+<span class="p">};</span>
+
+</pre></div>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/jmtt89">jmtt89</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
     </div>
-  </div>
-  <div ng-app="anglesExample">
-      <div class="container-fluid" ng-controller="angCtrl">
-        <div class="row">
-          <div class="col-sm-4">
-            <h1>A simple Chart.js wrapper for Angular</h1>
-          </div>
-          <div class="col-sm-8">
-            <h4>Angles.js is a set of directives that wrap the chart.js library for use with angular. Just include the angles.js file, add "angles" to your list of app requirements and check out the source for use. More to come.</h4>
-            <h4>As usual, I reserve no rights to this work. It's yours to do what you wish. Check out the source or github for details.</h4>
-            <h4><a href="http://github.com/lgsilver/angles" class="btn btn-default"><i class="icon-github"></i> Download from Github</a></h4>
-          </div>
-        </div>
-        <h1>Basic Usage</h1>
-        <div class="row">
-          <div class="col-sm-5 col-sm-offset-1">
-            <h2>Line Chart</h2>
-          <canvas linechart options="options" responsive="chk" data="chart[0]"></canvas>
-          </div>
-          <div class="col-sm-5">
-            <h2>Bar Chart</h2>
-          <canvas barchart options="options" data="chart[1]"></canvas>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-5 col-sm-offset-1">
-            <h2>Radar Chart</h2>
-          <canvas radarchart options="options" data="chart[2]"></canvas>
-          </div>
-          <div class="col-sm-5">
-            <h2>Polar Area Chart</h2>
-          <canvas polarchart options="options" data="chart[3]"></canvas>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-5 col-sm-offset-1">
-            <h2>Pie Chart</h2>
-          <canvas piechart options="options" data="chart[3]"></canvas>
-          </div>
-          <div class="col-sm-5" >
-            <h2>Doughnut Charts</h2>
-          <canvas donutchart options="options" data="chart[3]"></canvas>
-          </div>
-        </div>
-
-        <h1>Advance Usage</h1>
-        <section>
-          <h2>Size</h2>
-          <article class="row">
-            <p>
-              Canvas element support width and height parameters on declaration, if you don't do canvas take dimensions of the container
-            </p>            
-          </article>
-          <h3>Examples</h3>
-          <article class="row">
-            <div class="col-sm-6 col-sm-offset-3">
-              <h4>Auto Width and Height</h4>
-              <canvas linechart options="options" data="chart[0]" responsive=false></canvas>
-            </div>            
-          </article>
-          <article class="row">
-            <div class="col-sm-6 col-sm-offset-3">
-              <h4>Width adn Height Predefined</h4>
-              <canvas linechart options="options" data="chart[0]" responsive=false width="500" height="300"></canvas>
-            </div>                    
-          </article>
-        </section>
-        
-        <section>
-          <h2>Responsiveness</h2>
-          <article class="row">
-            <p>Now CharJS have Completely responsive featured, Angles, support this from two metods</p>
-            <ol>
-              <li>Add responsive property in canvas element</li>
-              <li>Add responsive option in scope options</li>
-            </ol>
-          </article>
-          <h3>Example</h3>
-          <article class="row">
-            <div class="col-sm-10 col-sm-offset-1">
-              <canvas linechart options="options" data="chart[0]" responsive=true tooltip="opp"></canvas>
-            </div>
-          </article>
-        </section>
-
-        <section>
-          <h2>Legend</h2>
-          <article class="row">
-            <p>Now Angles and CharJS allow you insert Legend of the graph, you only need add "legend=true" attribute in canvas and the legend added after the graph. The template for this legend is a legendTemplate in the chart options</p>
-            <p>Remember you need add CSS style at this legend.</p>
-          </article>
-            <h3>Examples</h3>
-          <article class="row">
-            <div class="col-xs-6 col-xs-offset-1">
-              <canvas donutchart options="optionsLegend" data="chart[3]" legend=true></canvas>
-            </div>
-          </article>
-        </section>
-
-      </div> <!-- /container -->
-  </div>
-  
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="libs/angular/angular.min.js"></script>
-    <script src="libs/chartjs/Chart.min.js"></script>
-    <script src="libs/angles/angles.js"></script>
-    <script src="app.js"></script>
+    <script src="javascripts/scale.fix.js"></script>
+    
   </body>
 </html>
