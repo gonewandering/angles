@@ -20,11 +20,11 @@
     "chartjs": "1.0.1-beta.2"
   },
   "homepage": "https://github.com/lgsilver/angles",
-  "_release": "37eca287fb",
+  "_release": "0859278e0c",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "37eca287fb279dbfc7cd8c86e0759fcb99fed9ad"
+    "commit": "0859278e0c09fc28c08f02d72d79341004f9afe3"
   },
   "_source": "git://github.com/lgsilver/angles.git",
   "_target": "*",
