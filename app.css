@@ -7,3 +7,21 @@ body {
 .right { 
 	text-align:right;
 }
+
+ul.doughnut-legend{
+	font-size: 150%;
+	margin-top: 5%;
+}
+
+li {
+margin-top: 4px;
+max-width: 200px;
+}
+
+li:hover {
+background-color: #EEE;
+}
+
+li > span {
+padding-right: 8px;
+}
