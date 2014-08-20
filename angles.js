@@ -66,16 +66,19 @@ angles.chart = function (type) {
             }, true);
 
             $scope.$watch("tooltip", function (newVal, oldVal){
-                chartCreated.draw();
-                if(newVal===undefined || !chartCreated.segments)
-                    return;
-                if(!isFinite(newVal) || newVal >= chartCreated.segments.length || newVal < 0)
-                    return;
-                var activeSegment = chartCreated.segments[newVal];
-                activeSegment.save();
-                activeSegment.fillColor = activeSegment.highlightColor;
-                chartCreated.showTooltip([activeSegment]);
-                activeSegment.restore();
+                if(chartCreated) {
+                    chartCreated.draw();
+                    if(newVal===undefined || !chartCreated.segments)
+                        return;
+                    if(!isFinite(newVal) || newVal >= chartCreated.segments.length || newVal < 0)
+                        return;
+                    var activeSegment = chartCreated.segments[newVal];
+                    activeSegment.save();
+                    activeSegment.fillColor = activeSegment.highlightColor;
+                    chartCreated.showTooltip([activeSegment]);
+                    activeSegment.restore();    
+                }
+                
             }, true);
 
             $scope.size();
