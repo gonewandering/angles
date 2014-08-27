@@ -65,8 +65,9 @@ angles.chart = function (type) {
                     angular.element($elem[0]).parent().after( chartCreated.generateLegend() );
             }, true);
 
-            $scope.$watch("tooltip", function (newVal, oldVal){
-                chartCreated.draw();
+            $scope.$watch("tooltip", function (newVal, oldVal) {
+                if (chartCreated)
+                    chartCreated.draw();
                 if(newVal===undefined || !chartCreated.segments)
                     return;
                 if(!isFinite(newVal) || newVal >= chartCreated.segments.length || newVal < 0)
