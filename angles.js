@@ -10,7 +10,7 @@ angles.chart = function (type) {
             width: "=",
             height: "=",
             resize: "=",
-            chart: "@",
+            type: "@",
             segments: "@",
             responsive: "=",
             tooltip: "=",
@@ -46,7 +46,7 @@ angles.chart = function (type) {
                 if (!newVal) {
                     return;
                 }
-                if ($scope.chart) { type = $scope.chart; }
+                if ($scope.type) { type = $scope.type; }
                 
                 if(autosize){
                     $scope.size();
