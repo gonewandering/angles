@@ -41,6 +41,8 @@ angles.chart = function (type) {
             $scope.$watch("data", function (newVal, oldVal) {
                 if(chartCreated)
                     chartCreated.destroy();
+                   
+                $scope.options = {};
                     
                 // if data not defined, exit
                 if (!newVal) {
