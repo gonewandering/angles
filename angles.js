@@ -42,7 +42,7 @@ angles.chart = function (type) {
                 if(chartCreated)
                     chartCreated.destroy();
                    
-                $scope.options = {};
+                $scope.options = $scope.options || {};
                     
                 // if data not defined, exit
                 if (!newVal) {
