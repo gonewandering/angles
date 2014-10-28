@@ -17,7 +17,6 @@
     "libs/Chart.js"
   ],
   "dependencies": {
-    "angular": "~1.2.0",
-    "chartjs": "1.0.1-beta.2"
+    "chartjs": "1.0.1-beta.3"
   }
 }
