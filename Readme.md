@@ -28,7 +28,7 @@ var app = angular.module("anglesExample", ["angles"]);
 Charts are added using a canvas element with the following syntax, which corresponds to Chart.js. The data and options attributes refer to ng-models in the controller scope. You can name these whatever you want:
 
 ```html
-<canvas chart type="Line" options="options" data="chart" width="500" height="300"></canvas>
+<canvas chart="Line" options="options" data="chart" width="500" height="300"></canvas>
 ```
 
 Charts can also be added with shorter, aliased types
@@ -87,7 +87,7 @@ For Chart.js Line Charts
 ```html
 <canvas linechart options="options" data="chart" width="300" height="300"></canvas>
 OR
-<canvas chart type="Line" options="options" data="chart" width="300" height="300"></canvas>
+<canvas chart="Line" options="options" data="chart" width="300" height="300"></canvas>
 ```
 
 ### barchart
@@ -97,7 +97,7 @@ For Chart.js Bar Charts
 ```html
 <canvas barchart options="options" data="chart" width="300" height="300"></canvas>
 OR
-<canvas chart type="Bar" options="options" data="chart" width="300" height="300"></canvas>
+<canvas chart="Bar" options="options" data="chart" width="300" height="300"></canvas>
 ```
 
 ### radarchart
@@ -107,7 +107,7 @@ For Chart.js Radar Charts
 ```html
 <canvas radarchart options="options" data="chart" width="300" height="300"></canvas>
 OR
-<canvas chart type="Radar" options="options" data="chart" width="300" height="300"></canvas>
+<canvas chart="Radar" options="options" data="chart" width="300" height="300"></canvas>
 ```
 
 ### polarchart
@@ -117,7 +117,7 @@ For Chart.js Polar Charts
 ```html
 <canvas polarchart options="options" data="chart" width="300" height="300"></canvas>
 OR
-<canvas chart type="PolarArea" options="options" data="chart" width="300" height="300"></canvas>
+<canvas chart="PolarArea" options="options" data="chart" width="300" height="300"></canvas>
 ```
 
 ### piechart
@@ -127,7 +127,7 @@ For Chart.js Pie Charts
 ```html
 <canvas piechart options="options" data="chart" width="300" height="300"></canvas>
 OR
-<canvas chart type="Pie" options="options" data="chart" width="300" height="300"></canvas>
+<canvas charte="Pie" options="options" data="chart" width="300" height="300"></canvas>
 ```
 
 ### doughnutchart
@@ -137,7 +137,7 @@ For Chart.js Doughnut Charts
 ```html
 <canvas doughnutchart options="options" data="chart" width="300" height="300"></canvas>
 OR
-<canvas chart type="Doughnut" options="options" data="chart" width="300" height="300"></canvas>
+<canvas chart="Doughnut" options="options" data="chart" width="300" height="300"></canvas>
 ```
 
 Options and Data
