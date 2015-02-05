@@ -17,6 +17,6 @@
     "libs/Chart.js"
   ],
   "dependencies": {
-    "chartjs": "1.0.1-beta.3"
+    "chartjs": "1.0.1"
   }
 }
