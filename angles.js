@@ -22,15 +22,17 @@ angles.chart = function (type) {
 
 			$scope.size = function () {
 	            if ($scope.width <= 0) {
-	                $elem.width($elem.parent().width());
-	                ctx.canvas.width = $elem.width();
+	                var width = $elem.parent()[0].clientWidth;
+	                $elem.css({width: width});
+	                ctx.canvas.width = width;
 	            } else {
 	                ctx.canvas.width = $scope.width || ctx.canvas.width;
 	                autosize = true;
 	            }
 
                 if($scope.height <= 0){
-                    $elem.height($elem.parent().height());
+                    var height = $elem.parent()[0].clientHeight;
+                    $elem.css({height: height});
                     ctx.canvas.height = ctx.canvas.width / 2;
                 } else {
                     ctx.canvas.height = $scope.height || ctx.canvas.height;
