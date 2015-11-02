@@ -93,8 +93,10 @@ angles.chart = function (type) {
                 chartCreated = chart[type]($scope.data, options);
                 chartCreated.update();
 
-                if ($scope.legend)
+                if($scope.legend) {
+                    angular.element($elem[0]).parent().parent().children('ul').remove();
                     angular.element($elem[0]).parent().after( chartCreated.generateLegend() );
+                }
             }
         }
     }
