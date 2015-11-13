@@ -38,33 +38,18 @@ angles.chart = function (type) {
                 }
 			}
 
-            $scope.$watch("data", function (newVal, oldVal) {
+            $scope.$watch("data", function () {
                 if(chartCreated)
                     chartCreated.destroy();
 
-                var options = $scope.options || {};
+                createChart();
+            }, true);
 
-                // if data not defined, exit
-                if (!newVal) {
-                    return;
-                }
-                if ($scope.chart) { type = $scope.chart; }
+            $scope.$watch("options", function () {
+                if(chartCreated)
+                    chartCreated.destroy();
 
-                if(autosize){
-                    $scope.size();
-                    chart = new Chart(ctx);
-                };
-
-                if($scope.responsive || $scope.resize)
-                    options.responsive = true;
-
-                if($scope.responsive !== undefined)
-                    options.responsive = $scope.responsive;
-
-                chartCreated = chart[type]($scope.data, options);
-                chartCreated.update();
-                if($scope.legend)
-                    angular.element($elem[0]).parent().after( chartCreated.generateLegend() );
+                createChart();
             }, true);
 
             $scope.$watch("tooltip", function (newVal, oldVal) {
@@ -84,6 +69,35 @@ angles.chart = function (type) {
             $scope.size();
             var chart = new Chart(ctx);
             var chartCreated;
+
+            function createChart() {
+                if (!$scope.data)
+                    return;
+
+                var options = $scope.options || {};
+
+                if ($scope.chart)
+                    type = $scope.chart;
+
+                if (autosize){
+                    $scope.size();
+                    chart = new Chart(ctx);
+                };
+
+                if ($scope.responsive || $scope.resize)
+                    options.responsive = true;
+
+                if ($scope.responsive !== undefined)
+                    options.responsive = $scope.responsive;
+
+                chartCreated = chart[type]($scope.data, options);
+                chartCreated.update();
+
+                if($scope.legend) {
+                    angular.element($elem[0]).parent().parent().children('ul').remove();
+                    angular.element($elem[0]).parent().after( chartCreated.generateLegend() );
+                }
+            }
         }
     }
 }
