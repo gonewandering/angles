@@ -52,7 +52,7 @@ angles.chart = function (type) {
 
                 if(autosize){
                     $scope.size();
-                    chart = new Chart(ctx);
+                    chart = new Chart(ctx, { type:type, data:$scope.data, options:options});
                 };
 
                 if($scope.responsive || $scope.resize)
@@ -61,7 +61,10 @@ angles.chart = function (type) {
                 if($scope.responsive !== undefined)
                     options.responsive = $scope.responsive;
 
-                chartCreated = chart[type]($scope.data, options);
+                //chartCreated = chart[type]($scope.data, options);
+                chartCreated.type = type;
+                chartCreated.data = $scope.data;
+                chartCreated.options = options;
                 chartCreated.update();
                 if($scope.legend)
                     angular.element($elem[0]).parent().after( chartCreated.generateLegend() );
