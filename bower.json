@@ -3,7 +3,8 @@
   "version": "1.0.1-beta",
   "authors": [
     "Lindsay Silver",
-    "Jesus Torres"
+    "Jesus Torres",
+    "Carney Wu"
   ],
   "main": "angles.js",
   "ignore": [
