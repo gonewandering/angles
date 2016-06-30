@@ -143,7 +143,8 @@ OR
 Options and Data
 ----------------
 
-You can provide options and data to all charts via the options and data attributes on the canvas elements.
+You can provide options and data to all charts via the options and data attributes on the canvas elements.  
+### Note this version works with Chartjs v2, The following code my not works in cubicwork/angles.
 
 ```html
 <body ng-app="app">
