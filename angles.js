@@ -9,12 +9,12 @@ angles.chart = function (type) {
             id: "@",
             width: "=",
             height: "=",
+            heightwithlabel: "=",
             resize: "=",
             chart: "@",
             segments: "@",
             responsive: "=",
-            tooltip: "=",
-            legend: "="
+            tooltip: "="
         },
         link: function ($scope, $elem) {
             var ctx = $elem[0].getContext("2d");
@@ -29,10 +29,33 @@ angles.chart = function (type) {
 	                autosize = true;
 	            }
 
-                if($scope.height <= 0){
+                if ( $scope.heightwithlabel) {
+                    var lineWidth = 0;
+                    var lines = 1;
+                    var maxWidth = $elem.parent().width();
+                    for( var il = 0; il < $scope.data.labels.length ; il ++) {
+                        var charWidth = 0;
+                        for( var ic = 0; ic < $scope.data.labels[il].length ; ic ++) {
+                            if( $scope.data.labels[il].charCodeAt(ic) < 255) {
+                                charWidth += 6;
+                            } else {
+                                charWidth += 12;
+                            }
+                        }
+                        var itemWidth = 27 + charWidth;
+                        lineWidth += itemWidth;
+                        if( lineWidth <= maxWidth ) {
+                            continue;
+                        } else {
+                            lines ++;
+                            lineWidth = itemWidth;
+                        }
+                    }
+                    ctx.canvas.height = ( maxWidth + 23 * lines + 5 ) * ( $scope.width / maxWidth );
+                } else if($scope.height <= 0) {
                     $elem.height($elem.parent().height());
-                    ctx.canvas.height = ctx.canvas.width / 2;
-                } else {
+                    ctx.canvas.height = ctx.canvas.width;
+                }  else {
                     ctx.canvas.height = $scope.height || ctx.canvas.height;
                     autosize = true;
                 }
@@ -52,7 +75,7 @@ angles.chart = function (type) {
 
                 if(autosize){
                     $scope.size();
-                    chart = new Chart(ctx, { type:type, data:$scope.data, options:options});
+                    //chart = new Chart(ctx, { type:type, data:$scope.data, options:$scope.options});
                 };
 
                 if($scope.responsive || $scope.resize)
@@ -62,13 +85,12 @@ angles.chart = function (type) {
                     options.responsive = $scope.responsive;
 
                 //chartCreated = chart[type]($scope.data, options);
-                chartCreated.type = type;
-                chartCreated.data = $scope.data;
-                chartCreated.options = options;
-                chartCreated.update();
-                if($scope.legend)
-                    angular.element($elem[0]).parent().after( chartCreated.generateLegend() );
-            }, true);
+                //chartCreated.type = type;
+                //chartCreated.data = $scope.data;
+                //chartCreated.options = options;
+                //chartCreated.update();
+                chart = new Chart(ctx, { type:type, data:$scope.data, options:$scope.options});
+            }, false);
 
             $scope.$watch("tooltip", function (newVal, oldVal) {
                 if (chartCreated)
@@ -85,7 +107,7 @@ angles.chart = function (type) {
             }, true);
 
             $scope.size();
-            var chart = new Chart(ctx);
+            var chart = new Chart(ctx, { type:type, data:$scope.data, options:$scope.options});
             var chartCreated;
         }
     }
@@ -94,10 +116,9 @@ angles.chart = function (type) {
 
 /* Aliases for various chart types */
 angles.directive("chart", function () { return angles.chart(); });
-angles.directive("linechart", function () { return angles.chart("Line"); });
-angles.directive("barchart", function () { return angles.chart("Bar"); });
-angles.directive("radarchart", function () { return angles.chart("Radar"); });
-angles.directive("polarchart", function () { return angles.chart("PolarArea"); });
-angles.directive("piechart", function () { return angles.chart("Pie"); });
-angles.directive("doughnutchart", function () { return angles.chart("Doughnut"); });
-angles.directive("donutchart", function () { return angles.chart("Doughnut"); });
+angles.directive("linechart", function () { return angles.chart("line"); });
+angles.directive("barchart", function () { return angles.chart("bar"); });
+angles.directive("radarchart", function () { return angles.chart("radar"); });
+angles.directive("polarchart", function () { return angles.chart("polarArea"); });
+angles.directive("piechart", function () { return angles.chart("pie"); });
+angles.directive("doughnutchart", function () { return angles.chart("doughnut"); });
