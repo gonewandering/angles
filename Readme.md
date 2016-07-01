@@ -1,7 +1,7 @@
-Angles.js
+Angles2
 =========
 
-An angular.js wrapper for the Chart.js library.
+An angular.js wrapper for the Chart.js v2 library.
 
 [Chart.js Documentation](http://www.chartjs.org/docs/)
 
@@ -14,8 +14,8 @@ Basic Usage
 
 To Use, make sure to include the following .js files above your app:
 ```html
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.10/angular.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.1-beta.2/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.10/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.min.js"></script>
 <script src="angles.js"></script>
 ```
 
@@ -49,30 +49,6 @@ the legend attribute auto generate a legend after canvas container
 
 ```html
 <canvas barchart legend=true options="options" data="chart"></canvas>
-```
-
-The template for this legend is a legendTemplate in the chart options
-
-```javascript
-$scope.chart = {
-    labels : ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-    datasets : [
-        {
-        	fillColor : "rgba(151,187,205,0)",
-        	strokeColor : "#e67e22",
-        	pointColor : "rgba(151,187,205,0)",
-        	pointStrokeColor : "#e67e22",
-        	data : [4, 3, 5, 4, 6]
-        },
-        {
-        	fillColor : "rgba(151,187,205,0)",
-        	strokeColor : "#f1c40f",
-        	pointColor : "rgba(151,187,205,0)",
-        	pointStrokeColor : "#f1c40f",
-        	data : [8, 3, 2, 5, 4]
-        }
-    ], 
-};
 ```
 
 That's it. You can change the values of the chart just as you would with any other angular model.
