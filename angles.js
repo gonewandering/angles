@@ -63,11 +63,11 @@ angles.chart = function (type) {
 
             $scope.$watch("data", function (newVal, oldVal) {
                 if(chartCreated)
-                    chartCreated.destroy();
+                    chart.destroy();
 
                 var options = $scope.options || {};
 
-                // if data not defined, exit
+                    // if data not defined, exit
                 if (!newVal) {
                     return;
                 }
@@ -83,12 +83,15 @@ angles.chart = function (type) {
                 if($scope.responsive !== undefined)
                     options.responsive = $scope.responsive;
 
+                $scope.size();
                 chart = new Chart(ctx, { type:type, data:$scope.data, options:$scope.options});
+                console.log("new Chart of datachange:"+type);
             }, false);
 
             $scope.size();
             var chart = new Chart(ctx, { type:type, data:$scope.data, options:$scope.options});
-            var chartCreated;
+            console.log("new Chart of init:"+type);
+            var chartCreated = true;
         }
     }
 }
