@@ -85,12 +85,10 @@ angles.chart = function (type) {
 
                 $scope.size();
                 chart = new Chart(ctx, { type:type, data:$scope.data, options:$scope.options});
-                console.log("new Chart of datachange:"+type);
             }, false);
 
             $scope.size();
             var chart = new Chart(ctx, { type:type, data:$scope.data, options:$scope.options});
-            console.log("new Chart of init:"+type);
             var chartCreated = true;
         }
     }
