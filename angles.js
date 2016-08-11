@@ -99,6 +99,7 @@ angles.chart = function (type) {
 angles.directive("chart", function () { return angles.chart(); });
 angles.directive("linechart", function () { return angles.chart("line"); });
 angles.directive("barchart", function () { return angles.chart("bar"); });
+angles.directive("horizontalbarchart", function () { return angles.chart("horizontalBar"); });
 angles.directive("radarchart", function () { return angles.chart("radar"); });
 angles.directive("polarchart", function () { return angles.chart("polarArea"); });
 angles.directive("piechart", function () { return angles.chart("pie"); });
