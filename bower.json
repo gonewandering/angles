@@ -1,9 +1,10 @@
 {
-  "name": "angles",
-  "version": "1.0.1-beta",
+  "name": "angles2",
+  "version": "2.0.0-alpha",
   "authors": [
     "Lindsay Silver",
-    "Jesus Torres"
+    "Jesus Torres",
+    "Carney Wu"
   ],
   "main": "angles.js",
   "ignore": [
@@ -17,6 +18,6 @@
     "libs/Chart.js"
   ],
   "dependencies": {
-    "chartjs": "1.0.1"
+    "chartjs": "2.1.6"
   }
 }
